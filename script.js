@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-
 async function fetchCoordinates(cityName) {
     try {  
         const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`);
@@ -69,7 +68,7 @@ async function fetchCoordinates(cityName) {
     }
 };
 
-// Fonction pour récupérer les données météorologiques
+
 async function fetchWeather(latitude, longitude) {
     try {
         const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`);
