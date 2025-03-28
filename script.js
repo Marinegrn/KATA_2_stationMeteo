@@ -61,8 +61,8 @@ async function fetchCoordinates(cityName) {
         };
         
     } catch (error) {
-        console.error('Erreur:', error.message);
-        document.getElementById('city').textContent = 'Ville non trouvée';
+        console.error('Erreur', error.message);
+        document.getElementById('city').textContent = "Ville non trouvée. Veuillez vérifier l'orthographe ou entrer un autre nom de ville.";
         document.getElementById('gps').textContent = '';
         document.getElementById('temperature').textContent = '-°C';
         document.getElementById('details').textContent = 'Erreur de recherche';
