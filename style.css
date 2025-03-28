@@ -2,9 +2,9 @@
 
 body {
     font-family: 'Sulphur Point', serif;
-    background: linear-gradient(135deg, #f9ded4, #efc2a4, #6268b6, #313d6c 100%);
+    background: linear-gradient(135deg,#edf5c4, #efc2a4, #6268b6, #313d6c, #191943 100%);
     background-size: 200% 200%;
-    animation: gradientAnimation 12s ease infinite;
+    animation: gradientAnimation 14s ease infinite;
     font-size: larger;
     display: flex;
     justify-content: center;
@@ -71,7 +71,7 @@ body {
 }
 
 .city-search button:hover {
-    background-color: #282277;
+    background-color: #0f0d31;
     color: white;
 }
 
@@ -121,11 +121,11 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.4s ease-in-out;
 }
 
 #themeToggle:hover {
-    background-color: #282277;
+    background-color: #0f0d31;
     color: #f5f7fa;
     transform: scale(1.1);
 }
