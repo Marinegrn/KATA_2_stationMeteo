@@ -1,10 +1,8 @@
-// Éléments du DOM
 const cityInput = document.getElementById('cityInput');
 const okButton = document.getElementById('okButton');
 const cityElement = document.getElementById('city');
 const gpsElement = document.getElementById('gps');
 
-// Événement de clic sur le bouton OK
 okButton.addEventListener('click', () => {
     const cityName = cityInput.value;
     if (cityName) {
@@ -22,21 +20,20 @@ cityInput.addEventListener('keypress', (e) => {
     }
 });
 
-// Affichage du message au chargement de la page
 document.addEventListener('DOMContentLoaded', async () => {
     await fetchCoordinates('');
     cityInput.value = '';
     document.getElementById('city').textContent = "Entrez le nom d'une ville";
     document.getElementById('gps').textContent = '';
-    document.getElementById('temperature').textContent = '-°C';
+    document.getElementById('temperature').textContent = '--°C';
     document.getElementById('details').textContent = 'Chargement des données...'
 });
 
 
 
 async function fetchCoordinates(cityName) {
-    try {
-        // Configuration de la requête pour Nominatim
+
+    try {  
         const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`);
 
         if (!response.ok) {
@@ -48,17 +45,13 @@ async function fetchCoordinates(cityName) {
         if (data.length === 0) {
             throw new Error('Ville non trouvée');
         }
-
-        // Récupération des informations de la première correspondance
+     
         const { lat, lon, display_name } = data[0];
-
-        // Mise à jour des éléments du DOM
         const cityElement = document.getElementById('city');
         const gpsElement = document.getElementById('gps');
         cityElement.textContent = display_name;
         gpsElement.textContent = `Latitude: ${parseFloat(lat).toFixed(4)}° | Longitude: ${parseFloat(lon).toFixed(4)}°`;
 
-        // Récupérer les données météo
         await fetchWeather(parseFloat(lat), parseFloat(lon));
 
         return { 
