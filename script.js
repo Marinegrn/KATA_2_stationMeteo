@@ -8,7 +8,7 @@ const gpsElement = document.getElementById('gps');
 okButton.addEventListener('click', () => {
     const cityName = cityInput.value;
     if (cityName) {
-        getCoordinates(cityName);
+        fetchCoordinates(cityName);
     }
 });
 
@@ -17,13 +17,13 @@ cityInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         const cityName = cityInput.value;
         if (cityName) {
-            getCoordinates(cityName);
+            fetchCoordinates(cityName);
         }
     }
 });
 
 
-async function getCoordinates(cityName) {
+async function fetchCoordinates(cityName) {
     try {
         // Configuration de la requête pour Nominatim
         const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`, {
@@ -52,7 +52,7 @@ async function getCoordinates(cityName) {
         gpsElement.textContent = `Latitude: ${parseFloat(lat).toFixed(4)}° | Longitude: ${parseFloat(lon).toFixed(4)}°`;
 
         // Récupérer les données météo
-        await getWeatherData(parseFloat(lat), parseFloat(lon));
+        await fetchWeather(parseFloat(lat), parseFloat(lon));
 
         return { 
             lat: parseFloat(lat), 
@@ -70,9 +70,9 @@ async function getCoordinates(cityName) {
 }
 
 // Fonction pour récupérer les données météorologiques
-async function getWeatherData(latitude, longitude) {
+async function fetchWeather(latitude, longitude) {
     try {
-        // Configuration de la requête pour Open-Meteo
+        // Configuration API Open-Meteo
         const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`);
         
         if (!response.ok) {
@@ -111,5 +111,5 @@ async function getWeatherData(latitude, longitude) {
 
 // Charger les données d'une ville par défaut au chargement
 document.addEventListener('DOMContentLoaded', () => {
-    getCoordinates('Paris');
+    fetchCoordinates('Paris');
 });
