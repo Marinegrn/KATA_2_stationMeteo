@@ -69,47 +69,47 @@ async function getCoordinates(cityName) {
     }
 }
 
-// // Fonction pour récupérer les données météorologiques
-// async function getWeatherData(latitude, longitude) {
-//     try {
-//         // Configuration de la requête pour Open-Meteo
-//         const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`);
+// Fonction pour récupérer les données météorologiques
+async function getWeatherData(latitude, longitude) {
+    try {
+        // Configuration de la requête pour Open-Meteo
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`);
         
-//         if (!response.ok) {
-//             throw new Error('Erreur de récupération des données météo');
-//         }
+        if (!response.ok) {
+            throw new Error('Erreur de récupération des données météo');
+        }
 
-//         const weatherData = await response.json();
+        const weatherData = await response.json();
 
-//         // Extraction des données actuelles
-//         const { temperature, windspeed, winddirection } = weatherData.current_weather;
+        // Extraction des données actuelles
+        const { temperature, windspeed, winddirection } = weatherData.current_weather;
         
-//         // Récupération des prévisions horaires
-//         const currentHour = new Date().getHours();
-//         const hourlyTemperatures = weatherData.hourly.temperature_2m;
-//         const hourlyHumidity = weatherData.hourly.relativehumidity_2m;
+        // Récupération des prévisions horaires
+        const currentHour = new Date().getHours();
+        const hourlyTemperatures = weatherData.hourly.temperature_2m;
+        const hourlyHumidity = weatherData.hourly.relativehumidity_2m;
 
-//         // Mise à jour des éléments du DOM
-//         const temperatureElement = document.getElementById('temperature');
-//         const detailsElement = document.getElementById('details');
+        // Mise à jour des éléments du DOM
+        const temperatureElement = document.getElementById('temperature');
+        const detailsElement = document.getElementById('details');
 
-//         temperatureElement.textContent = `${temperature}°C`;
-//         detailsElement.innerHTML = `
-//             Vent : ${windspeed} km/h (direction : ${winddirection}°)<br>
-//             Humidité : ${hourlyHumidity[currentHour]}%<br>
-//             Temp. horaire : ${hourlyTemperatures[currentHour]}°C
-//         `;
+        temperatureElement.textContent = `${temperature}°C`;
+        detailsElement.innerHTML = `
+            Vent : ${windspeed} km/h (direction : ${winddirection}°)<br>
+            Humidité : ${hourlyHumidity[currentHour]}%<br>
+            Temp. horaire : ${hourlyTemperatures[currentHour]}°C
+        `;
 
-//         return weatherData;
-//     } catch (error) {
-//         console.error('Erreur météo:', error.message);
-//         document.getElementById('temperature').textContent = '-°C';
-//         document.getElementById('details').textContent = 'Impossible de charger les données météo';
-//         return null;
-//     }
-// }
+        return weatherData;
+    } catch (error) {
+        console.error('Erreur météo:', error.message);
+        document.getElementById('temperature').textContent = '-°C';
+        document.getElementById('details').textContent = 'Impossible de charger les données météo';
+        return null;
+    }
+}
 
-// // Charger les données d'une ville par défaut au chargement
-// document.addEventListener('DOMContentLoaded', () => {
-//     getCoordinates('Paris');
-// });
+// Charger les données d'une ville par défaut au chargement
+document.addEventListener('DOMContentLoaded', () => {
+    getCoordinates('Paris');
+});
