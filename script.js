@@ -48,7 +48,7 @@ async function fetchCoordinates(cityName) {
         const cityElement = document.getElementById('city');
         const gpsElement = document.getElementById('gps');
         cityElement.textContent = display_name;
-        gpsElement.textContent = `Latitude: ${parseFloat(lat).toFixed(4)}° | Longitude: ${parseFloat(lon).toFixed(4)}°`;
+        gpsElement.textContent = `Coordonnées GPS: ${parseFloat(lat)}°, ${parseFloat(lon)}°`;
 
         await fetchWeather(parseFloat(lat), parseFloat(lon));
 
