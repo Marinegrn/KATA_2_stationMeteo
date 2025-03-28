@@ -41,12 +41,12 @@ async function fetchCoordinates(cityName) {
         }
 
         const data = await response.json();
+        const { lat, lon, display_name } = data[0];
 
         if (data.length === 0) {
             throw new Error('Ville non trouvée')
         }
      
-        const { lat, lon, display_name } = data[0];
         const cityElement = document.getElementById('city');
         const gpsElement = document.getElementById('gps');
         cityElement.textContent = display_name;
@@ -64,8 +64,8 @@ async function fetchCoordinates(cityName) {
         console.error('Erreur', error.message);
         document.getElementById('city').textContent = "Ville non trouvée. Veuillez vérifier l'orthographe ou entrer un autre nom de ville.";
         document.getElementById('gps').textContent = '';
-        document.getElementById('temperature').textContent = '-°C';
-        document.getElementById('details').textContent = 'Erreur de recherche';
+        document.getElementById('temperature').textContent = '';
+        document.getElementById('details').textContent = '';
         return null;
     }
 };
@@ -76,7 +76,7 @@ async function fetchWeather(latitude, longitude) {
         const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`);
         
         if (!response.ok) {
-            throw new Error('Erreur de récupération des données météo')
+            throw new Error('Erreur de récupération des données météorologiques')
         }
 
         const weatherData = await response.json();
@@ -99,9 +99,9 @@ async function fetchWeather(latitude, longitude) {
         return weatherData;
 
     } catch (error) {
-        console.error('Erreur météo:', error.message);
-        document.getElementById('temperature').textContent = '--°C';
-        document.getElementById('details').textContent = 'Impossible de charger les données météo';
+        console.error('Aucun résultat', error.message);
+        document.getElementById('temperature').textContent = '';
+        document.getElementById('details').textContent = 'Impossible de charger les données météorologiques';
         return null;
     }
 };
