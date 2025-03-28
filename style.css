@@ -2,9 +2,9 @@
 
 body {
     font-family: 'Sulphur Point', serif;
-    background: linear-gradient(135deg, #e6c7bb, #505e9a 100%);
+    background: linear-gradient(135deg, #f9ded4, #efc2a4, #6268b6, #313d6c 100%);
     background-size: 200% 200%;
-    animation: gradientAnimation 4.8s ease infinite;
+    animation: gradientAnimation 12s ease infinite;
     font-size: larger;
     display: flex;
     justify-content: center;
@@ -48,6 +48,7 @@ body {
     padding: 10px;
     border: 2px solid #e0e0e0;
     border-radius: 8px 0 0 8px;
+    font-family: 'Arial', sans-serif;
     font-size: 16px;
     transition: border-color 0.3s ease;
 }
