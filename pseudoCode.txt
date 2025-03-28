@@ -1,0 +1,87 @@
+Récupération de tous les éléments du DOM
+cityInput
+okButtoncityElement
+gpsElement
+
+Ajout d'événement au clic sur le bouton OK
+    déclaration de la constante cityName qui stocke le nom de la ville entrée par l'utilisateur en valeur dans la constante cityInput
+    si cityName {
+        appel de la fonction fetchCoordinates(cityName)
+    }
+
+
+Ajout bonus d'un événement en appuyant sur ka touche entrée
+    si l'événement est strictemment égal à 'entrée {
+        valeur de cityName
+        si (cityName) {
+        appel de la fonction fetchCoordinates(cityName)
+        }
+    }
+
+Affichage du message au chargement de la page
+
+Création de la fonction asynchrone fetchCoordinates avec en paramètre cityName {
+
+    gestion d'erreur avec try {
+       Configuration de l'API des coordonnées
+       si la récupération a échoué {
+        generer un message d'erreur
+       }
+
+       déclarationde la constante data pour récupérer le json
+
+       si la longueur de la data est strictement égal à 0 {
+            générer un message d'erreur
+        }
+
+    Récupération des informations de la première correspondance dans un tableau
+
+    MAJ des éléments du DOM
+
+    appel de la fonction fetchWeather pour récupérer les données météo
+
+    retourner les latitude et longitude (methode pour les nombres décimaux) et le nom
+    }
+
+    si catch(erreur) {
+        modifier les messages types d'erreur
+        retourner null
+    }
+
+}
+
+
+Création de la fonction asynchrone fetchWeather avec en paramètres latitude et longitude {
+
+    gestion d'erreur avec try {
+        Configuration de l'API Open-Meteo
+        si la récupération a échoué {
+            générer un message d'erreur
+        }
+
+        déclaration de la constante weatherData pour récupérer le json
+
+        Extraction des données actuelles :
+            constante { température, vitesse du vent, direction du vent }
+
+        Récupération des prévisions horaires :
+            constante heure actuelle qui stocke en valeur la nouvelle date, utilisation de la méthode getHours
+            récupération/déclaration constante qui stocke en valeur températures horaires
+            récupération/déclaration constante qui stocke en valeur humidité horaire
+
+        Mise à jour des éléments du DOM :
+            constante temperatureElement
+            constante elementDetails
+
+            affichage des données météo actuelles et horaires
+
+        retourner les données météo
+    }
+
+    si catch(erreur) {
+        afficher un message d'erreur dans la console
+        mise à jour des éléments du DOM avec des valeurs par défaut
+        retourner null
+    }
+
+}

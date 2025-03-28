@@ -32,18 +32,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 async function fetchCoordinates(cityName) {
-
     try {  
         const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`);
 
         if (!response.ok) {
-            throw new Error('Erreur de récupération des coordonnées');
+            throw new Error('Erreur de récupération des coordonnées')
         }
 
         const data = await response.json();
 
         if (data.length === 0) {
-            throw new Error('Ville non trouvée');
+            throw new Error('Ville non trouvée')
         }
      
         const { lat, lon, display_name } = data[0];
@@ -68,29 +67,24 @@ async function fetchCoordinates(cityName) {
         document.getElementById('details').textContent = 'Erreur de recherche';
         return null;
     }
-}
+};
 
 // Fonction pour récupérer les données météorologiques
 async function fetchWeather(latitude, longitude) {
     try {
-        // Configuration API Open-Meteo
         const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`);
         
         if (!response.ok) {
-            throw new Error('Erreur de récupération des données météo');
+            throw new Error('Erreur de récupération des données météo')
         }
 
         const weatherData = await response.json();
-
-        // Extraction des données actuelles
         const { temperature, windspeed, winddirection } = weatherData.current_weather;
         
-        // Récupération des prévisions horaires
         const currentHour = new Date().getHours();
         const hourlyTemperatures = weatherData.hourly.temperature_2m;
         const hourlyHumidity = weatherData.hourly.relativehumidity_2m;
 
-        // Mise à jour des éléments du DOM
         const temperatureElement = document.getElementById('temperature');
         const detailsElement = document.getElementById('details');
 
@@ -102,11 +96,12 @@ async function fetchWeather(latitude, longitude) {
         `;
 
         return weatherData;
+
     } catch (error) {
         console.error('Erreur météo:', error.message);
-        document.getElementById('temperature').textContent = '-°C';
+        document.getElementById('temperature').textContent = '--°C';
         document.getElementById('details').textContent = 'Impossible de charger les données météo';
         return null;
     }
-}
+};
 
