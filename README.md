@@ -29,7 +29,7 @@ Ce projet consiste à créer une mini-station météo. L'objectif est d'afficher
 
 - [Documentation HTML](https://developer.mozilla.org/fr/docs/Web/HTML)
 - [Documentation CSS](https://developer.mozilla.org/fr/docs/Web/CSS)
-- [Documentation JavcaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+- [Documentation JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 - [Documentation Geocoding Open Street Map](https://nominatim.org/release-docs/develop/api/Search/#free-form-query)
 - [Documentation Open-Méteo](https://open-meteo.com/en/docs)
 
