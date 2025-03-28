@@ -13,8 +13,8 @@ okButton.addEventListener('click', () => {
 });
 
 // bonus ajouté par mes soins: événement sur la touche entrée
-cityInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
+cityInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
         const cityName = cityInput.value;
         if (cityName) {
             fetchCoordinates(cityName);
@@ -22,12 +22,23 @@ cityInput.addEventListener('keypress', (event) => {
     }
 });
 
+// Affichage du message au chargement de la page
+document.addEventListener('DOMContentLoaded', async () => {
+    await fetchCoordinates('');
+    cityInput.value = '';
+    document.getElementById('city').textContent = "Entrez le nom d'une ville";
+    document.getElementById('gps').textContent = '';
+    document.getElementById('temperature').textContent = '-°C';
+    document.getElementById('details').textContent = 'Chargement des données...'
+});
+
+
 
 async function fetchCoordinates(cityName) {
     try {
         // Configuration de la requête pour Nominatim
         const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`);
-        
+
         if (!response.ok) {
             throw new Error('Erreur de récupération des coordonnées');
         }
@@ -106,7 +117,3 @@ async function fetchWeather(latitude, longitude) {
     }
 }
 
-// Charger les données d'une ville par défaut au chargement
-document.addEventListener('DOMContentLoaded', () => {
-    fetchCoordinates('Paris');
-});
