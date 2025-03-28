@@ -76,9 +76,10 @@ body {
 }
 
 #city {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial';
     font-size: 35px;
-    color: #333;
+    font-weight: 700;
+    color: #151c37;
     margin-bottom: 12px;
 }
 
