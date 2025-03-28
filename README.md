@@ -6,15 +6,15 @@ Ce projet consiste à créer une mini-station météo. L'objectif est d'afficher
 
 ### Objectifs du projet
 
-- Intégration Web HTML/CSS: Création d'une page web pour visualiser les données.
+- Intégration Web HTML/CSS: Création d'une page web pour visualiser les données
 - Rendre l'interface responsive et accessible
 
 ### Objectifs JavaScript
 
-- Dynamiser l'interface utilisateur en affichant des données météorologiques en temps réel.
-- Manipuler le DOM pour mettre à jour les informations affichées sans recharger la page.
-- Intégrer des données provenant d'une API météo et coordonnées pour enrichir le contenu.
-- Gérer les interactions utilisateur, comme la sélection d'une ville et l'actualisation des données.
+- Dynamiser l'interface utilisateur en affichant des données météorologiques en temps réel
+- Manipuler le DOM pour mettre à jour les informations affichées sans recharger la page
+- Intégrer des données provenant d'une API météo et coordonnées pour enrichir le contenu
+- Gérer les interactions utilisateur, comme la sélection d'une ville et l'actualisation des données
 
 ### APIs
 - **Geocoding Open Street Map** (https://nominatim.openstreetmap.org)
