@@ -3,10 +3,10 @@
 async function fetchData(url) {
     const response = await fetch(url);
     const data = await response.json();
-    // test de la requête pour la ville de Paris & de l'API -> OK
-    // console.log(data); 
+    // test de la requête des coordonnées de la ville de Paris & Lyon -> OK
+     console.log(data); 
 };
 
-fetchData('https://nominatim.openstreetmap.org/search?q=Paris&format=json&addressdetails=1&limit=1');
+fetchData('https://nominatim.openstreetmap.org/search?q=Lyon&format=json&addressdetails=1&limit=1');
 
 
