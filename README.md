@@ -35,4 +35,4 @@ Ce projet consiste à créer une mini-station météo. L'objectif est d'afficher
 
 ### Autrices:
 - JavaScript: **Marine GAREIN** | Etudiante promotion Frances Spence Ada TECH School
-- HTML/CSS: **Laïla ATRMOUH** | Encadrante Ada TECH School
+- Template HTML/CSS de base: **Laïla ATRMOUH** | Encadrante Ada TECH School
