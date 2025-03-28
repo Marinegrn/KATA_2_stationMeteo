@@ -85,3 +85,5 @@ Création de la fonction asynchrone fetchWeather avec en paramètres latitude et
     }
 
 }
+
+bonus: ajout mode sombre (en cours de dev)

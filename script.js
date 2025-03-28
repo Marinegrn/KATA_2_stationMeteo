@@ -104,3 +104,16 @@ async function fetchWeather(latitude, longitude) {
     }
 };
 
+// Partie bonus CSS & changement de design (en cours de dev)
+const themeToggle = document.getElementById('themeToggle');
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.style.backgroundColor = 'black';
+        document.body.style.color = '#ffffff';
+    } else {
+        document.body.style.backgroundColor = '#ffffff';
+        document.body.style.color = '#000000';
+    }
+});
