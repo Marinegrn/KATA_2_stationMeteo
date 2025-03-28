@@ -26,11 +26,7 @@ cityInput.addEventListener('keypress', (event) => {
 async function fetchCoordinates(cityName) {
     try {
         // Configuration de la requête pour Nominatim
-        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`, {
-            headers: {
-                'User-Agent': 'MiniStationMeteo/1.0 (votre-email@exemple.com)'
-            }
-        });
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`);
         
         if (!response.ok) {
             throw new Error('Erreur de récupération des coordonnées');
@@ -59,6 +55,7 @@ async function fetchCoordinates(cityName) {
             lon: parseFloat(lon), 
             name: display_name 
         };
+        
     } catch (error) {
         console.error('Erreur:', error.message);
         document.getElementById('city').textContent = 'Ville non trouvée';
