@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('city').textContent = "Entrez le nom d'une ville";
     document.getElementById('gps').textContent = '';
     document.getElementById('temperature').textContent = '--°C';
-    document.getElementById('details').textContent = 'Chargement des données...'
+    document.getElementById('details').textContent = ''
 });
 
 
@@ -36,6 +36,8 @@ async function fetchCoordinates(cityName) {
 
         if (!response.ok) {
             throw new Error('Erreur de récupération des coordonnées')
+        } else if (response.ok) {
+            document.getElementById('details').textContent = 'Chargement des données...'
         }
 
         const data = await response.json();
@@ -91,7 +93,7 @@ async function fetchWeather(latitude, longitude) {
         detailsElement.innerHTML = `
             Vent : ${windspeed} km/h (direction : ${winddirection}°)<br>
             Humidité : ${hourlyHumidity[currentHour]}%<br>
-            Temp. horaire : ${hourlyTemperatures[currentHour]}°C
+            Température actuelle : ${hourlyTemperatures[currentHour]}°C
         `;
 
         return weatherData;

@@ -2,7 +2,9 @@
 
 body {
     font-family: 'Sulphur Point', serif;
-    background: linear-gradient(135deg, #E8CBC0, #636FA4 100%);
+    background: linear-gradient(135deg, #e6c7bb, #505e9a 100%);
+    background-size: 200% 200%;
+    animation: gradientAnimation 4.8s ease infinite;
     font-size: larger;
     display: flex;
     justify-content: center;
@@ -13,13 +15,26 @@ body {
     box-sizing: border-box;
 }
 
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+    
+}
+
 .weather-container {
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     padding: 30px;
     text-align: center;
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
 }
 
@@ -44,8 +59,10 @@ body {
 
 .city-search button {
     padding: 10px 15px;
+    font-family: 'Sulphur point', serif;
     background-color: #85c1bf;
-    color: white;
+    color: black;
+
     border: none;
     border-radius: 0 8px 8px 0;
     cursor: pointer;
@@ -54,6 +71,7 @@ body {
 
 .city-search button:hover {
     background-color: #282277;
+    color: white;
 }
 
 #city {
@@ -73,13 +91,13 @@ body {
 #gps {
     margin-top: 12px;
     margin-bottom: 12px;
-    font-style: italic;
-    color: #7f8c8d;
+    color: #3f3d5b;
 }
 
 #details {
     margin-top: 20px;
-    color: #7f8c8d;
+    color: #50787a;
+    font-weight: bolder;
 }
 
 .loading {
@@ -91,11 +109,12 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
+    font-family: 'Sulphur Point', serif;
     background-color: #85c1bf;
     color: black;
     border: none;
     border-radius: 10px;
-    width: 100px;
+    width: 140px;
     height: 50px;
     display: flex;
     justify-content: center;
